@@ -1,0 +1,33 @@
+{
+  "name": "ytdl-core-muxer",
+  "version": "1.0.0",
+  "description": "An wrapper that muxes the best video and audio from ytdl-core",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redbrain/ytdl-core-muxer.git"
+  },
+  "keywords": [
+    "ytdl-core",
+    "ffmpeg",
+    "muxing",
+    "multiplex",
+    "quality",
+    "best",
+    "hd",
+    "1080p"
+  ],
+  "author": "redbrain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redbrain/ytdl-core-muxer/issues"
+  },
+  "homepage": "https://github.com/redbrain/ytdl-core-muxer#readme",
+  "dependencies": {
+    "ffmpeg-static": "^4.2.7",
+    "ytdl-core": "^4.1.6"
+  }
+}
