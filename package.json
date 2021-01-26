@@ -1,6 +1,6 @@
 {
   "name": "ytdl-core-muxer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An wrapper that muxes the best video and audio from ytdl-core",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/redbrain/ytdl-core-muxer#readme",
   "dependencies": {
-    "ffmpeg-static": "^4.2.7",
-    "ytdl-core": "^4.1.6"
+    "ffmpeg-static": "*",
+    "ytdl-core": "*"
   }
 }
