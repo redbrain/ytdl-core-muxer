@@ -27,7 +27,9 @@
   },
   "homepage": "https://github.com/redbrain/ytdl-core-muxer#readme",
   "dependencies": {
-    "ffmpeg-static": "*",
-    "ytdl-core": "*"
+    "ytdl-core": "4.x"
+  },
+  "devDependencies" : {
+    "ffmpeg-static": "latest" 
   }
 }
