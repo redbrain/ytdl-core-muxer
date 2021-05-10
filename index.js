@@ -4,16 +4,22 @@
 \*\ credit and thanks for those authors: fent, TimeForANinja, coolaj86
 /*/ //////////////////////////////////////////////////////////////////
 
-
 // require all the things!
 const ytdl = require('ytdl-core');
-const ffmpegPath = require('ffmpeg-static');
 const cp = require('child_process');
 const stream = require('stream');
+let ffmpegPath = "ffmpeg";
+
+// Now make sure if ffmpeg-static is installed or no. If it's no, Use default command `ffmpeg`
+try {
+	ffmpegPath = require("ffmpeg-static");
+} catch (error) {
+	ffmpegPath = "ffmpeg";
+}
 
 // default export: the ffmpeg muxer
 const ytmux = (link, options = {}) => {
-    const result = new stream.PassThrough({ highWaterMark: options.highWaterMark || 1024 * 512 });
+    let result = new stream.PassThrough({ highWaterMark: options.highWaterMark || 1024 * 512 });
     ytdl.getInfo(link, options).then(info => {
         audioStream = ytdl.downloadFromInfo(info, { ...options, quality: 'highestaudio' });
         videoStream = ytdl.downloadFromInfo(info, { ...options, quality: 'highestvideo' });
@@ -27,8 +33,8 @@ const ytmux = (link, options = {}) => {
             '-map', '0:a', '-map', '1:v',
             // no need to change the codec
             '-c', 'copy',
-            // output mp4 and pipe
-            '-f', 'matroska', 'pipe:5'
+            // output matroska (mkv) and pipe
+            '-f', options.outputFormat || 'matroska', 'pipe:5'
         ], {
             // no popup window for Windows users
             windowsHide: true,
