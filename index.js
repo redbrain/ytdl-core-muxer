@@ -42,7 +42,7 @@ const ytmux = (link, options = {}) => {
         audioStream.pipe(ffmpegProcess.stdio[3]);
         videoStream.pipe(ffmpegProcess.stdio[4]);
         ffmpegProcess.stdio[5].pipe(result);
-    });
+    }).catch(err => result.emit('error', err));
     return result;
 };
 
