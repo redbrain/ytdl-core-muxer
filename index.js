@@ -15,8 +15,8 @@ const stream = require('stream');
 const ytmux = (link, options = {}) => {
     const result = new stream.PassThrough({ highWaterMark: options.highWaterMark || 1024 * 512 });
     ytdl.getInfo(link, options).then(info => {
-        audioStream = ytdl.downloadFromInfo(info, { ...options, quality: 'highestaudio' });
-        videoStream = ytdl.downloadFromInfo(info, { ...options, quality: 'highestvideo' });
+        audioStream = ytdl.downloadFromInfo(info, { quality: 'highestaudio', ...options });
+        videoStream = ytdl.downloadFromInfo(info, { quality: 'highestvideo', ...options });
         // create the ffmpeg process for muxing
         ffmpegProcess = cp.spawn(ffmpegPath, [
             // supress non-crucial messages
